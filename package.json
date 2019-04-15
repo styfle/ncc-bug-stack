@@ -1,0 +1,14 @@
+{
+  "name": "ncc-bug-stack",
+  "version": "1.0.0",
+  "description": "A bug",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && mkdir dist && node build.js && ls -lA dist",
+    "build-cli": "rm -rf dist && ncc build index.js --source-map && ls -lA dist"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@zeit/ncc": "0.18.0"
+  }
+}
