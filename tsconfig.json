@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "target": "esnext",
+    "module": "commonjs",
+    "sourceMap": false,
+    "declaration": false
+  },
+  "include": [
+    "index.ts"
+  ]
+}
