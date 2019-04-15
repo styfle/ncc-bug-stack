@@ -1,4 +1,4 @@
-const path = require('path');
+const { join } = require('path');
 const fs = require('fs');
 const {promisify} = require('util');
 const writeFile = promisify(fs.writeFile);
@@ -8,10 +8,11 @@ async function main() {
 	const input = './index.js';
 	const outDir = './dist';
 	const opts = { sourceMap: true, sourceMapRegister: true };
-	const { code, assets } = await ncc(input, opts);
-	await writeFile(path.join(outDir, input), code);
+	const { code, map, assets } = await ncc(input, opts);
+	await writeFile(join(outDir, input), code);
+	await writeFile(join(outDir, `${input}.map`), map);
 	for (var [assetName, assetCode] of Object.entries(assets)) {
-		await writeFile(path.join(outDir, assetName), assetCode);
+		await writeFile(join(outDir, assetName), assetCode.source.toString('utf8'));
 	}
 	return 'success';
 }
